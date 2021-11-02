@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import ApiDisplay from "./ApiDisplay";
+import Navbar from "./Navbar";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import TestPage from "./TestPage";
+import CategoriesDisplay from "./CategoriesDisplay";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Router>
+        <div class="container">
+          <Link to="/api">Endpoints</Link>
+          <Link to="/api/categories">Categories</Link>
+        </div>
+        <div className="container pt-4">
+          <Switch>
+            <Route exact path="/api">
+              <ApiDisplay />
+            </Route>
+            <Route exact path="/api/categories">
+              <CategoriesDisplay />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </>
   );
 }
 

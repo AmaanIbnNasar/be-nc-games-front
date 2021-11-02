@@ -26,19 +26,24 @@ const ReviewItem = ({
       className="card w-100 reviewItem mb-3"
       onClick={() => history.push(`/api/reviews/${review_id}`)}
     >
-      <div className="row g-0">
-        <div className="col-2">
-          <img className="img-fluid rounded-start" src={review_img_url}></img>
+      <div className="row g-0" style={{ height: "150px" }}>
+        <div className="col-2" style={{ height: "100%" }}>
+          <img
+            className="img-review-list rounded-start"
+            src={review_img_url}
+          ></img>
         </div>
         <div className="col-10">
           <div className="card-body">
             <h3 className="card-title">{title}</h3>
-            <div className="d-flex justify-content-between text-muted">
-              <div>Owner: {owner}</div>
-              <div>Category: {category}</div>
-              <div>Votes: {votes}</div>
-              <div>Comment count: {comment_count}</div>
-              <div>Created At: {new Date(created_at).toLocaleString()}</div>
+            <div className="row text-muted">
+              <div className="col">Owner: {owner}</div>
+              <div className="col">Category: {category}</div>
+              <div className="col">Votes: {votes}</div>
+              <div className="col">Comment count: {comment_count}</div>
+              <div className="col">
+                Created At: {new Date(created_at).toLocaleString()}
+              </div>
             </div>
           </div>
         </div>

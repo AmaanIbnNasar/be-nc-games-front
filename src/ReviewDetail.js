@@ -96,12 +96,10 @@ const ReviewComments = ({ review_id }) => {
     `/api/reviews/${review_id}/comments`
   );
   if (comments) {
-    if (comments.length === 0) {
-      return <h3>No Comments</h3>;
-    }
     return (
       <>
         <h3>Comments</h3>
+        {comments.comments.length === 0 && <h4>No comments</h4>}
         {comments.comments.map((comment) => (
           <CommentDetail comment={comment} key={comment.comment_id} />
         ))}

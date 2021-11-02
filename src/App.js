@@ -1,29 +1,28 @@
 import ApiDisplay from "./ApiDisplay";
 import Navbar from "./Navbar";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import TestPage from "./TestPage";
 import CategoriesDisplay from "./CategoriesDisplay";
+import ReviewList from "./ReviewList";
+import ReviewDetail from "./ReviewDetail";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Router>
-        <div class="container">
-          <Link to="/api">Endpoints</Link>
-          <Link to="/api/categories">Categories</Link>
-        </div>
-        <div className="container pt-4">
-          <Switch>
-            <Route exact path="/api">
-              <ApiDisplay />
-            </Route>
-            <Route exact path="/api/categories">
-              <CategoriesDisplay />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+      <Switch>
+        <Route exact path="/api">
+          <ApiDisplay />
+        </Route>
+        <Route exact path="/api/categories">
+          <CategoriesDisplay />
+        </Route>
+        <Route exact path="/api/reviews">
+          <ReviewList />
+        </Route>
+        <Route exact path="/api/reviews/:review_id">
+          <ReviewDetail />
+        </Route>
+      </Switch>
     </>
   );
 }

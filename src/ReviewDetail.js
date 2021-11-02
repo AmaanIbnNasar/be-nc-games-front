@@ -46,6 +46,14 @@ const CommentForm = ({ review_id, setComments }) => {
       }}
     >
       <h3 className="mb-3">New comment</h3>
+      {error && (
+        <div className="card text-white bg-danger mb-3 w-100">
+          <div className="card-header">Error</div>
+          <div className="card-body">
+            <p className="card-text">{error}</p>
+          </div>
+        </div>
+      )}
       <div className="mb-3">
         <label for="exampleFormControlInput1" classname="form-label">
           Username

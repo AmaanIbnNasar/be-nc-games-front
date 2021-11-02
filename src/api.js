@@ -31,18 +31,19 @@ export const useApiCallback = (endpoint, options, setDataCallback) => {
   const cb = () => {
     (async () => {
       setState("loading");
+      setError(null);
       try {
         const resp = await fetch(baseUrl + endpoint, options);
-        if (!(resp.status >= 200 && resp.status < 300)) {
-          throw new Error("status code: " + resp.status);
-        }
         const data = await resp.json();
+        if (!(resp.status >= 200 && resp.status < 300)) {
+          throw data;
+        }
         setDataCallback(data);
         setState("idle");
       } catch (err) {
         console.log(err);
         setState("error");
-        setError("Something went wrong");
+        setError(err.msg || "Something went wrong");
       }
     })();
   };
